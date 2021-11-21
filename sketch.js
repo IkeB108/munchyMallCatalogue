@@ -31,7 +31,7 @@ function draw() {
 }
 
 function startRedirect(){
-  var inputDate = decodeDate( passcodeEntry.value() );
+  var inputDate = decodeDate( passcodeEntry.value().toLowerCase() );
   if(inputDate.day && inputDate.month && inputDate.year && inputDate.type){
     //passcode was successful
     if(inputDate.type == 'buy')var rand = 12;
