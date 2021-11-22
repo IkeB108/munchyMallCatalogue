@@ -31,7 +31,7 @@ function draw() {
 }
 
 function startRedirect(){
-  var inputDate = decodeDate( passcodeEntry.value().toLowerCase() );
+  var inputDate = decodeDate( passcodeEntry.value() );
   if(inputDate.day && inputDate.month && inputDate.year && inputDate.type){
     //passcode was successful
     if(inputDate.type == 'buy')var rand = 12;
@@ -39,7 +39,9 @@ function startRedirect(){
     if(inputDate.type == 'buy lite')var rand = 14;
     if(inputDate.type == 'sample')var rand = 15;
     //rand is manually set to a value between 12 and 15 depending on book type
-    var fileName = encodeDate(inputDate.day, inputDate.month, inputDate.year, rand, inputDate.type).toString() + inputDate.type + '.html'
+    var typeName = inputDate.type;
+    if(inputDate.type == 'buy lite')typeName = "buylite"
+    var fileName = encodeDate(inputDate.day, inputDate.month, inputDate.year, rand, inputDate.type).toString() + typeName + '.html'
     console.log(fileName)
     window.location = 'https://ikeb108.github.io/munchyMallCatalogue/' + fileName
   } else {
